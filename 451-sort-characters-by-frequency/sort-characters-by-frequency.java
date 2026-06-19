@@ -1,6 +1,7 @@
 class Solution {
     public String frequencySort(String s) {
-        
+
+        //hash map to store thr characters and its frequency
         HashMap<Character,Integer> hm = new HashMap<>();
 
         for(int i=0;i<s.length();i++){
@@ -14,16 +15,14 @@ class Solution {
 
         StringBuilder sb = new StringBuilder();
 
-        while(pq.size() > 0){
+        while(pq.size()>0){
             HashMap.Entry<Character,Integer> temp = pq.poll();
             char ch = temp.getKey();
             int count = temp.getValue();
-
-            while(count >0){
+            while(count>0){
                 sb.append(ch);
                 count--;
             }
-
         }
         return sb.toString();
     }
