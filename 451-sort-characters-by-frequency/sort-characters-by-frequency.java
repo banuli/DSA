@@ -1,7 +1,7 @@
 class Solution {
     public String frequencySort(String s) {
-
-        //hash map to store thr characters and its frequency
+        
+        // get the frequency into a hm
         HashMap<Character,Integer> hm = new HashMap<>();
 
         for(int i=0;i<s.length();i++){
@@ -9,13 +9,13 @@ class Solution {
             hm.put(ch,hm.getOrDefault(ch,0)+1);
         }
 
-        PriorityQueue<HashMap.Entry<Character,Integer>> pq = new PriorityQueue<>((a,b)->b.getValue()-a.getValue());
+        PriorityQueue<HashMap.Entry<Character,Integer>> pq = new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
 
         pq.addAll(hm.entrySet());
 
         StringBuilder sb = new StringBuilder();
 
-        while(pq.size()>0){
+        while(pq.size() > 0){
             HashMap.Entry<Character,Integer> temp = pq.poll();
             char ch = temp.getKey();
             int count = temp.getValue();
