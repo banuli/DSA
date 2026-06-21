@@ -1,24 +1,24 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-
         int[] ans = new int[k];
-        //using Hash map and priority Queue
-        HashMap<Integer,Integer> hm = new HashMap<>();
 
-        for(int i:nums){
-            hm.put(i,hm.getOrDefault(i,0)+1);
+        // populate into the hash map - frequency
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
         }
-        
-        // put this in a max heap
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> hm.get(b)-hm.get(a));
+
+        // use a priority queue to sort the frequence
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->hm.get(b)-hm.get(a));
 
         pq.addAll(hm.keySet());
-        
-        int i = 0;
+
+        int i=0;
         while(i<k){
             ans[i] = pq.poll();
             i++;
         }
         return ans;
+        
     }
 }
