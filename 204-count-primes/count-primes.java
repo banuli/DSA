@@ -12,7 +12,7 @@ class Solution {
 
         for(int i=2;i*i<n;i++){
             if(isPrime[i]){
-                for(int mul = i*i;mul < n;mul = mul+i){
+                for(int mul = i*i; mul < n; mul += i){
                     isPrime[mul] = false;
                 }
             }
