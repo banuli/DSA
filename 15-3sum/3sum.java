@@ -12,6 +12,8 @@ class Solution {
             if(i>0 && nums[i] == nums[i-1]){
                 continue;
             }
+
+            // use 2 pointer to get the next 2 element
             int l = i+1;
             int r = n-1;
             while(l<r){
