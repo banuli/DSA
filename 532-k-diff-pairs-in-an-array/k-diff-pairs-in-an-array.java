@@ -1,21 +1,20 @@
 class Solution {
     public int findPairs(int[] nums, int k) {
 
-        // get hash map with all the values frequency
+        // hash map for frequencey
         HashMap<Integer,Integer> freq = new HashMap<>();
-
-        for(int i:nums){
-            freq.put(i,freq.getOrDefault(i,0)+1);
-        }
         int count = 0;
-        // iterate through the freq key set to get the values
-        for(int val:freq.keySet()){
 
-            if((k > 0 && freq.containsKey(val+k)) || (k ==0 && freq.get(val) > 1)){
+        for(int val:nums){
+            freq.put(val,freq.getOrDefault(val,0)+1);
+        }
+
+        // loop through the freq keys to check if val+k is present
+        for(int val:freq.keySet()){
+            if((k != 0 && freq.containsKey(val+k)) ||(k == 0 && freq.get(val)>1)){
                 count++;
             }
         }
-
         return count;
         
     }
