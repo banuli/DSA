@@ -1,28 +1,22 @@
 class Solution {
-    List<List<Integer>> result = new ArrayList<>();
-    public void generateSubsets(int[] nums, int idx, List<Integer> set){
-        // base case
+    List<List<Integer>> ans = new ArrayList<>();
+    public void genSets(int[] nums, int idx, List<Integer> l){
+        
         if(idx == nums.length){
-            result.add(new ArrayList<>(set));
+            ans.add(new ArrayList<>(l));
             return;
         }
 
-        // include the index value
-        set.add(nums[idx]);
-        generateSubsets(nums,idx+1,set);
+        l.add(nums[idx]);
+        genSets(nums,idx+1,l);
 
-        //do not incude the index value
-        set.remove(set.size()-1);
-        generateSubsets(nums,idx+1,set);
-
+        // undo
+        l.remove(l.size()-1);
+        genSets(nums,idx+1,l);
     }
     public List<List<Integer>> subsets(int[] nums) {
-        List<Integer> set = new ArrayList<>();
-        generateSubsets(nums,0,set);
-
-        return result;
-
-
-        
+        List<Integer> l = new ArrayList<>();
+        genSets(nums,0,l);
+        return ans;
     }
 }
