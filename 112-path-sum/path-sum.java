@@ -22,9 +22,7 @@ class Solution {
         if(root.left == null && root.right == null){
             if(root.val == targetSum) return true;
         }
-        if(hasPathSum(root.left,targetSum - root.val) == true) return true;
-        if(hasPathSum(root.right,targetSum - root.val) == true) return true;
-
-        return false;
+       
+        return (hasPathSum(root.left,targetSum - root.val) || hasPathSum(root.right,targetSum - root.val));
     }
 }
