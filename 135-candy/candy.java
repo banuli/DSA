@@ -15,18 +15,17 @@ class Solution {
             }
         }
 
-        // check for all values to its right
+        // check for all values to its right 
         for(int i=n-2;i>=0;i--){
             if(ratings[i] > ratings[i+1]){
                 right[i] = right[i] + right[i+1];
             }
         }
 
-        // from both left and right sum up all maximum values ..
+        // from both left and right sum up all maximum values
         for(int i=0;i<n;i++){
             ans += Math.max(left[i],right[i]);
         }
-
         return ans;
         
     }
