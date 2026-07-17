@@ -22,7 +22,7 @@ class Solution {
             }
         }
 
-        // from both left and right sum up all maximum values
+        // from both left and right sum up all maximum values ..
         for(int i=0;i<n;i++){
             ans += Math.max(left[i],right[i]);
         }
