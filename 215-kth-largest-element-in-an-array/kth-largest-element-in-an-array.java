@@ -1,22 +1,21 @@
 class Solution {
     public int findKthLargest(int[] nums, int k) {
 
-        if(nums.length <k) return -1;
-
-        // max heap
+        // will try using Max heap
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
 
-        for(int i:nums){
-            pq.add(i);
+        for(int val:nums){
+            pq.add(val);
+
         }
 
-        int i = 1;
-        while(i < k){
+        while(k>1){
             pq.poll();
-            i++;
+            k--;
         }
 
-        return pq.poll();
+        return pq.peek();
+
         
     }
 }
