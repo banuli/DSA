@@ -1,16 +1,22 @@
 class Solution {
     public int change(int amount, int[] coins) {
         int n = coins.length;
-        int [] dp = new int[amount+1];
+
+        // for each amount calculate the answer for all coins
+        int[]dp = new int[amount+1];
         dp[0] = 1;
 
-        for(int i= 0;i<n;i++){
-            for(int amt = 1;amt<=amount;amt++){
-                if(coins[i] <= amt){
-                    dp[amt] += dp[amt - coins[i]];
+        for(int coin:coins){
+
+            for(int amt= 1; amt <= amount ;amt++){
+                if(coin <= amt){
+                    dp[amt] += dp[amt-coin];
                 }
             }
+
         }
+
         return dp[amount];
+        
     }
 }
