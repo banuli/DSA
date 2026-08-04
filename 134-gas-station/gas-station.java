@@ -1,28 +1,28 @@
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        int n = gas.length;
+        int n = cost.length;
 
-        // if toal gas  < total cost return -1
-        int totalGas = 0;
+        //if cost is more than gas return -1
         int totalCost = 0;
+        int totalGas = 0;
         for(int i=0;i<n;i++){
-            totalGas += gas[i];
             totalCost += cost[i];
+            totalGas += gas[i];
         }
-        if(totalGas < totalCost) return -1;
 
+        if(totalCost > totalGas) return -1;
+
+        // else find the index where we have a positive index
         int runningGas = 0;
-        int idx = 0;
-        for (int i=0;i<n;i++){
-            runningGas += gas[i] - cost[i];
+        int index = 0;
+        for(int i=0;i<n;i++){
 
+            runningGas += gas[i]-cost[i];
             if(runningGas < 0){
                 runningGas = 0;
-                idx = i+1;
+                index = i+1;
             }
         }
-
-
-        return idx;
+        return index;
     }
 }
