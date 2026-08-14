@@ -1,32 +1,34 @@
 class Solution {
     public int candy(int[] ratings) {
+
         int n = ratings.length;
-        int ans = 0;
-        int[] left  = new int[n];
-        int[] right = new int[n];
+        if(n==1) return 1;
 
-        Arrays.fill(left,1);
-        Arrays.fill(right,1);
+        int[] leftA = new int[n];
+        int[] rightA = new int[n];
 
-        // now check for left from its left neighbour
+        Arrays.fill(leftA,1);
+        Arrays.fill(rightA,1);
+
+        // check all neighbours of left array
         for(int i=1;i<n;i++){
             if(ratings[i] > ratings[i-1]){
-                left[i] = left[i] + left[i-1];
+                leftA[i] = leftA[i-1]+1;
             }
         }
 
-        // check for all values to its right 
+        // check all th right neighbours
         for(int i=n-2;i>=0;i--){
             if(ratings[i] > ratings[i+1]){
-                right[i] = right[i] + right[i+1];
+                rightA[i] = rightA[i+1] + 1;
             }
         }
 
-        // from both left and right sum up all maximum values
+        int ans = 0;
         for(int i=0;i<n;i++){
-            ans += Math.max(left[i],right[i]);
+            ans += Math.max(leftA[i],rightA[i]);
         }
+
         return ans;
-        
     }
 }
