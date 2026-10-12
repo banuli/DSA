@@ -1,0 +1,19 @@
+class Solution {
+    public int[] countBits(int n) {
+
+        int[] ans = new int[n+1];
+
+        int offset = 1;
+
+        for(int i=1;i<=n;i++){
+            
+            // off set is always multiples of 2 = 1,4,8,16...
+            if(offset * 2 == i){
+                offset = i;
+            }
+
+            ans[i] = 1 + ans[i-offset];
+        }
+        return ans;
+    }
+}
